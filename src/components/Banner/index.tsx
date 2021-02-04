@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style.scss";
-import { Axios, image_base_url, requests } from "../services/request";
-import { keyType } from "../utils/types";
+import { Axios, image_base_url, requests } from "../../services/request";
+import { keyType } from "../../utils/types";
 
 export const Banner = () => {
   const [movie, setMovie] = useState<keyType>();

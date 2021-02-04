@@ -1,8 +1,8 @@
 import React from "react";
-import { Banner } from "../Banner";
-import { NavBar } from "../Nav";
-import { Row } from "../Row";
-import { requests } from "../services/request";
+import { Banner } from "../../components/Banner";
+import { NavBar } from "../../Nav";
+import { Row } from "../../Row";
+import { requests } from "../../services/request";
 import "./style.scss";
 
 export const HomeScreen = () => {
