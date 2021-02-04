@@ -15,19 +15,12 @@ export const HomeScreen = () => {
         fetchUrl={requests.fetchNetflixOriginals}
         isLargeRow={true}
       />
-      <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
-      <Row
-        title="NETFLIX ORIGINALS"
-        fetchUrl={requests.fetchNetflixOriginals}
-      />
-      <Row
-        title="NETFLIX ORIGINALS"
-        fetchUrl={requests.fetchNetflixOriginals}
-      />
-      <Row
-        title="NETFLIX ORIGINALS"
-        fetchUrl={requests.fetchNetflixOriginals}
-      />
+      <Row title="TOP RATED" fetchUrl={requests.fetchTopRated} />
+      <Row title="TRENDING" fetchUrl={requests.fetchTrending} />
+      <Row title="ACTION MOVIES" fetchUrl={requests.fetchActionMovies} />
+      <Row title="COMEDY MOVIES" fetchUrl={requests.fetchComedyMovies} />
+      <Row title="HORROR MOVIES" fetchUrl={requests.fetchHorrorMovies} />
+      <Row title="ROMANCE MOVIES" fetchUrl={requests.fetchRomanceMovies} />
     </div>
   );
 };
