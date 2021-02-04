@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Axios } from "../services/request";
+import { Axios, image_base_url } from "../services/request";
+import { keyType } from "../utils/types";
 import "./style.scss";
 
 interface IProps {
   title: string;
   fetchUrl: string;
+  isLargeRow?: boolean;
 }
-export const Row: React.FC<IProps> = ({ title, fetchUrl }: IProps) => {
+export const Row: React.FC<IProps> = ({
+  title,
+  fetchUrl,
+  isLargeRow = false,
+}: IProps) => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     async function fetchData() {
@@ -21,6 +27,18 @@ export const Row: React.FC<IProps> = ({ title, fetchUrl }: IProps) => {
   return (
     <div className="row">
       <h2>{title}</h2>
+      <div className="row__posters">
+        {movies.map((movie: keyType) => (
+          <img
+            key={movie.id}
+            src={`${image_base_url}${
+              isLargeRow ? movie.poster_path : movie.backdrop_path
+            }`}
+            className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+            alt={`${movie.name} poster`}
+          />
+        ))}
+      </div>
     </div>
   );
 };

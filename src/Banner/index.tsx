@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style.scss";
-import { Axios, requests } from "../services/request";
-
-interface keyType {
-  [key: string]: any;
-}
+import { Axios, image_base_url, requests } from "../services/request";
+import { keyType } from "../utils/types";
 
 export const Banner = () => {
   const [movie, setMovie] = useState<keyType>();
@@ -33,7 +30,7 @@ export const Banner = () => {
     <header
       className="banner"
       style={{
-        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
+        backgroundImage: `url("${image_base_url}${movie?.backdrop_path}")`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
       }}

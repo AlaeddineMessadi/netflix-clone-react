@@ -13,11 +13,9 @@ export const HomeScreen = () => {
       <Row
         title="NETFLIX ORIGINALS"
         fetchUrl={requests.fetchNetflixOriginals}
+        isLargeRow={true}
       />
-      <Row
-        title="NETFLIX ORIGINALS"
-        fetchUrl={requests.fetchNetflixOriginals}
-      />
+      <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
       <Row
         title="NETFLIX ORIGINALS"
         fetchUrl={requests.fetchNetflixOriginals}
