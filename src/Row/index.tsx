@@ -28,16 +28,20 @@ export const Row: React.FC<IProps> = ({
     <div className="row">
       <h2>{title}</h2>
       <div className="row__posters">
-        {movies.map((movie: keyType) => (
-          <img
-            key={movie.id}
-            src={`${image_base_url}${
-              isLargeRow ? movie.poster_path : movie.backdrop_path
-            }`}
-            className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-            alt={`${movie.name} poster`}
-          />
-        ))}
+        {movies.map(
+          (movie: keyType) =>
+            ((isLargeRow && movie.poster_path) ||
+              (!isLargeRow && movie.backdrop_path)) && (
+              <img
+                key={movie.id}
+                src={`${image_base_url}${
+                  isLargeRow ? movie.poster_path : movie.backdrop_path
+                }`}
+                className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+                alt={`${movie.name} poster`}
+              />
+            )
+        )}
       </div>
     </div>
   );
