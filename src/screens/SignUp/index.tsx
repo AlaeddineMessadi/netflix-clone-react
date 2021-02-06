@@ -21,7 +21,7 @@ const SignUpScreen = () => {
       });
   };
 
-  const SignUp = (e: React.MouseEvent<HTMLElement>) => {
+  const signUp = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
 
     setError("");
@@ -50,12 +50,12 @@ const SignUpScreen = () => {
           placeholder="Password"
         />
         {error && <p className="signupScreen__error">{error}</p>}
-        <button type="submit" onClick={register}>
+        <button type="submit" onClick={signUp}>
           Sign In
         </button>
         <h4>
           <span className="signupScreen__gray">New to Netflix?</span>
-          <span className="signupScreen_link" onClick={SignUp}>
+          <span className="signupScreen_link" onClick={register}>
             Sign Up now.
           </span>
         </h4>
