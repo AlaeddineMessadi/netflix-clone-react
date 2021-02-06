@@ -21,7 +21,7 @@ export const ProfileScreen = () => {
           <div className="profileScreen__details">
             <h2>{user.email}</h2>
             <div className="profileScreen_plans">
-              <h3>Plans</h3>
+              <h3>Plans</h3>profileprofile
               <button
                 onClick={() => auth.signOut()}
                 className="profileScreen__signOut"
