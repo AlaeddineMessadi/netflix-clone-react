@@ -66,6 +66,7 @@
 
     .loginScreen__input {
       margin: 20px;
+
       form>input {
         padding: 10px;
         outline-width: 0;
@@ -73,6 +74,11 @@
         width: 30%;
         border: none;
         max-width: 600px;
+
+        &.error {
+          border: 1px solid #e50914;
+          box-shadow: 0 0 5px rgb(202, 26, 26);
+        }
       }
 
       .loginScree__getStarted {

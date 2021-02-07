@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import { auth } from "../../firebase";
 import "./style.scss";
 
-const SignUpScreen = () => {
+interface IProp {
+  email?: string;
+}
+
+export const SignUpScreen: React.FC<IProp> = ({ email: emailInput = "" }) => {
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(emailInput);
   const [error, setError] = useState("");
+
   const register = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
 
@@ -41,11 +46,13 @@ const SignUpScreen = () => {
         <h1>SignUp</h1>
         <input
           onChange={(e) => setEmail(e.target.value)}
+          value={email}
           type="email"
           placeholder="Email"
         />
         <input
           onChange={(e) => setPassword(e.target.value)}
+          value={password}
           type="password"
           placeholder="Password"
         />
@@ -63,5 +70,3 @@ const SignUpScreen = () => {
     </div>
   );
 };
-
-export default SignUpScreen;

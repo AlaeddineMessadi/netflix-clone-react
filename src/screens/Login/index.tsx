@@ -1,26 +1,35 @@
-import React, { useState } from "react";
-import SignUpScreen from "../SignUp";
+import React, { useRef, useState } from "react";
+import { NavBar } from "../../Nav";
+import { SignUpScreen } from "../SignUp";
+import classNames from "classnames";
 
 import "./style.scss";
 
 export const LoginScreen = () => {
   const [SignIn, setSignIn] = useState(false);
+  const [email, setEmail] = useState("");
+  const [isNotValid, setIsNotValid] = useState(false);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleGetStarted = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    const isInputValid = emailRef.current?.checkValidity();
+    console.log(isInputValid);
+    if (isInputValid) {
+      setSignIn(true);
+    } else {
+      setIsNotValid(true);
+    }
+  };
   return (
     <div className="loginScreen">
       <div className="loginScreen__background">
-        <img
-          className="loginScreen__logo"
-          src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
-          alt=""
-        />
-        <button className="loginScreen__button" onClick={() => setSignIn(true)}>
-          Sing In
-        </button>
-
+        <NavBar />
         <div className="loginScreen__gradient"></div>
         <div className="loginScreen_body">
           {SignIn ? (
-            <SignUpScreen />
+            <SignUpScreen email={email} />
           ) : (
             <>
               <h1>Unlimited films, TV programes and more.</h1>
@@ -30,11 +39,17 @@ export const LoginScreen = () => {
                 membership.
               </h3>
               <div className="loginScreen__input">
-                <form>
-                  <input type="text" placeholder="Email Address" />
+                <form ref={formRef}>
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    ref={emailRef}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className={classNames({ error: isNotValid })}
+                  />
                   <button
                     className="loginScree__getStarted"
-                    onClick={() => setSignIn(true)}
+                    onClick={handleGetStarted}
                   >
                     GET STARTED
                   </button>

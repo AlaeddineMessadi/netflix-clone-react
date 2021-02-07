@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { selectUser } from "../features/userSlice";
 import "./style.scss";
 
 export const NavBar = () => {
   const [show, setShow] = useState(false);
 
+  const { user } = useSelector(selectUser);
   const history = useHistory();
 
   const transitionNavBar = () => {
@@ -32,12 +35,21 @@ export const NavBar = () => {
         alt="Netflix logo"
       />
 
-      <img
-        onClick={() => history.push("/profile")}
-        className="nav__avatar"
-        src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-        alt="Netflix Avatar"
-      />
+      {user ? (
+        <img
+          onClick={() => history.push("/profile")}
+          className="nav__avatar"
+          src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+          alt="Netflix Avatar"
+        />
+      ) : (
+        <button
+          className="loginScreen__button"
+          onClick={() => history.push("/")}
+        >
+          Sing In
+        </button>
+      )}
     </div>
   );
 };
