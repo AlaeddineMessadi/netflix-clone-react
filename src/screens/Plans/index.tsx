@@ -36,6 +36,7 @@ export const PlansScreen = () => {
     return () => {};
   }, [user.uid]);
 
+  console.log(subscription);
   useEffect(() => {
     db.collection("products")
       .where("active", "==", true)
